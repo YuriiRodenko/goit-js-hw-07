@@ -33,10 +33,24 @@ function onClickGalleryItems (e) {
 
     const source = e.target.dataset.source;
     const instance = basicLightbox.create(`
-    <img src="${source}"width="800" height="600">`);
+    <img src="${source}"width="1200">`,
+      {
+      onShow: () => {
+        window.addEventListener("keydown", onInstanceKeydown);
+      },
+      onClose: () => {
+        window.removeEventListener("keydown", onInstanceKeydown);
+      },
+    }
+    );
+
+    function onInstanceKeydown(e) {
+    if (e.keyCode !== 27) {
+      return;
+    }
+    instance.close();
+  }
 
   instance.show();
 };
-
-
 
