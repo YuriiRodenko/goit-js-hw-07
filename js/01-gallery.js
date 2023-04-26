@@ -53,5 +53,3 @@ function onClickGalleryItems (e) {
 
   instance.show();
 };
-
-// Это строчка добавлена для создания комита, после будет удалена!!!
